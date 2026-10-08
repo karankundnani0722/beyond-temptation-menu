@@ -22,7 +22,7 @@ input,textarea{width:100%;padding:12px;border:1px solid #cdbba8;border-radius:10
 @media(max-width:600px){h1{font-size:24px}.grid{grid-template-columns:1fr}}
 </style></head>
 <body>
-<header><div class="wrap"><h1>Café Beyond Temptation </h1><div class="sub">Digital Menu • Pickup Ordering</div>
+<header><div class="wrap"><h1>Café Beyond Temptation</h1><div class="sub">Digital Menu • Pickup Ordering</div>
 <input id="search" class="search" placeholder="Search the menu…"></div></header>
 <div class="tabs wrap" id="tabs"></div><main id="menu"></main>
 <div class="cartbar"><div class="cartinner"><div><b id="count">0 items</b><div id="total">₹0</div></div><button class="primary" onclick="openCart()">View Cart & Order</button></div></div>
@@ -61,7 +61,7 @@ if(!count)c.innerHTML="<p>Your cart is empty.</p>";else c.innerHTML+="<hr><div c
 function sendWhatsApp(){const entries=Object.entries(cart);if(!entries.length){alert("Please add at least one item.");return}
 const name=document.getElementById("custName").value.trim(),phone=document.getElementById("custPhone").value.trim();if(!name||!phone){alert("Please enter your name and mobile number.");return}
 let sub=0,count=0,lines=[];entries.forEach(([n,x])=>{sub+=x.qty*x.price;count+=x.qty;lines.push(x.qty+" × "+n+" — ₹"+(x.qty*x.price))});
-let msg="*NEW PICKUP ORDER — BEYOND TEMPTATION CAFÉ*\n\nName: "+name+"\nCustomer Mobile: "+phone+"\n\n*Items:*\n"+lines.join("\n")+"\n\nItems Subtotal: ₹"+sub+"\nParcel Charges: ₹"+(count*parcelPerItem)+"\n*TOTAL: ₹"+(sub+count*parcelPerItem)+"*\n\nOrder Type: *PICKUP*";
+let msg="*NEW PICKUP ORDER — CAFÉ BEYOND TEMPTATION*\n\nName: "+name+"\nCustomer Mobile: "+phone+"\n\n*Items:*\n"+lines.join("\n")+"\n\nItems Subtotal: ₹"+sub+"\nParcel Charges: ₹"+(count*parcelPerItem)+"\n*TOTAL: ₹"+(sub+count*parcelPerItem)+"*\n\nOrder Type: *PICKUP*";
 const notes=document.getElementById("notes").value.trim();if(notes)msg+="\nNotes: "+notes;msg+="\n\nPlease confirm my pickup order.";
 window.open("https://wa.me/"+wa+"?text="+encodeURIComponent(msg),"_blank")}
 document.getElementById("search").addEventListener("input",e=>render(e.target.value));renderTabs();render();
